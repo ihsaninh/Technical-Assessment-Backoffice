@@ -1,0 +1,49 @@
+<form
+  [formGroup]="loginForm"
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="onLoginForm()"
+  autocomplete="off"
+  class="bg-axiata-white md:flex md:justify-between w-screen h-auto md:h-screen"
+>
+  <div class="md:w-7/12 w-0 flex flex-col justify-center">
+    <div class="ml-14 mt-6">
+      <img src="assets/svg/login.svg" alt="logo" width="500" />
+    </div>
+  </div>
+  <div
+    class="items-center justify-center md:overflow-auto md:w-1/2 w-full h-screen md:h-auto my-auto md:px-20"
+  >
+    <h1 class="mb-6 text-center text-2xl font-bold text-pink-600">LOGIN</h1>
+    <p class="text-sm text-center text-primary">
+      Enter your details below to access the application.
+    </p>
+    <div class="flex flex-col w-full px-12 mt-6">
+      <mat-form-field appearance="standard">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          placeholder="Enter your Username"
+          formControlName="username"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="Enter your Password"
+          formControlName="password"
+        />
+      </mat-form-field>
+    </div>
+    <div class="px-12 mt-3">
+      <button
+        class="w-full rounded-full"
+        mat-raised-button
+        color="primary"
+        [disabled]="!loginForm.valid || isLoading"
+      >
+        {{ isLoading ? 'Logged in...' : 'Login' }}
+      </button>
+    </div>
+  </div>
+</form>

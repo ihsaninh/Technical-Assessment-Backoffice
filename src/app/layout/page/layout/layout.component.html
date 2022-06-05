@@ -1,0 +1,17 @@
+<mat-sidenav-container class="sidebar">
+	<mat-sidenav #sidenav="matSidenav"
+		[mode]="side"
+		[opened]="opened"
+		role="navigation">
+		<app-sidebar></app-sidebar>
+	</mat-sidenav>
+
+	<mat-sidenav-content>
+		<app-header [isDesktop]="isDesktop"
+			(sidenavToggle)="sidenav.toggle(); setSidenavStatus(sidenav.opened)"></app-header>
+
+		<main class="p-4">
+			<router-outlet></router-outlet>
+		</main>
+	</mat-sidenav-content>
+</mat-sidenav-container>

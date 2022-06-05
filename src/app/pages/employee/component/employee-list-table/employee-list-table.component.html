@@ -1,0 +1,112 @@
+<table
+  mat-table
+  [dataSource]="table.dataSource"
+  matSort
+  class="table-responsive mt-6"
+>
+  <ng-container [matColumnDef]="table.columns[0]">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      {{ table.labels[0] }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row[table.columns[0]] }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="table.columns[1]">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      {{ table.labels[1] }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row[table.columns[1]] }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="table.columns[2]">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      {{ table.labels[2] }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row[table.columns[2]] }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="table.columns[3]">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      {{ table.labels[3] }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row[table.columns[3]] }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="table.columns[4]">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      {{ table.labels[4] }}
+    </th>
+    <td mat-cell *matCellDef="let row">
+      {{ row[table.columns[4]] | date: "dd MMM yyyy" }}
+    </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="table.columns[5]">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      {{ table.labels[5] }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row[table.columns[5]] | rupiah }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="table.columns[6]">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      {{ table.labels[6] }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row[table.columns[6]] }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="table.columns[7]">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      {{ table.labels[7] }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row[table.columns[7]] }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="table.columns[8]">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      {{ table.labels[8] }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row[table.columns[8]] }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="table.columns[9]">
+    <th mat-header-cell *matHeaderCellDef>
+      {{ table.labels[9] }}
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <div class="flex flex-row gap-2">
+        <button
+          mat-raised-button
+          color="accent"
+          class="mat-elevation-z0"
+        >
+          Edit
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          class="mat-elevation-z0"
+        >
+          Delete
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="no-content">
+    <th scope="col" *matHeaderCellDef [colSpan]="table.columns.length">
+      Data tidak tersedia
+    </th>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="table.columns"></tr>
+
+  <tr
+    mat-header-row
+    class="no-content"
+    *matHeaderRowDef="['no-content']"
+    [style.display]="table.totalData === 0 ? 'table-row' : 'none'"
+  ></tr>
+
+  <tr mat-row *matRowDef="let row; columns: table.columns"></tr>
+</table>

@@ -1,0 +1,12 @@
+<div class="flex justify-center items-center bg-blue-900">
+  <h1 class="text-2xl text-center py-3 text-white font-normal">Company</h1>
+</div>
+
+<mat-nav-list *ngFor="let item of menuItem">
+  <a
+    mat-list-item
+    [routerLink]="item.path"
+    [ngClass]="{ active: item.path ? router.isActive(item.path, true) : false }"
+    >{{ item.name }}</a
+  >
+</mat-nav-list>

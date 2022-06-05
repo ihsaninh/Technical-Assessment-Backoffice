@@ -1,0 +1,135 @@
+<form
+  [formGroup]="employeeForm"
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="onAddEmployee()"
+  autocomplete="off"
+  class="bg-white rounded-2xl p-8 mt-6 mx-3"
+>
+  <h1 class="text-xl mt-4 font-base">Add Employee</h1>
+  <hr class="mt-6" />
+  <div class="mt-4">
+    <p class="text-xl mt-4 font-base text-gray-700 mb-4">Basic Info</p>
+    <div class="flex flex-row md:w-2/3 w-1/2 gap-4">
+      <div class="flex flex-col mb-4 md:w-1/2 w-full">
+        <label class="mb-2 text-primary">Username*</label>
+        <input
+          formControlName="username"
+          placeholder="Enter Username"
+          class="border px-4 py-3 rounded-lg text-sm"
+        />
+      </div>
+      <div class="flex flex-col mb-4 md:w-1/2 w-full">
+        <label class="mb-2 text-primary">Email*</label>
+        <input
+          formControlName="email"
+          placeholder="Enter Email"
+          class="border px-4 py-3 rounded-lg text-sm"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-row md:w-2/3 w-1/2 gap-4">
+      <div class="flex flex-col mb-4 md:w-1/2 w-full">
+        <label class="mb-2 text-primary">First Name*</label>
+        <input
+          formControlName="firstName"
+          placeholder="Enter First Name"
+          class="border px-4 py-3 rounded-lg text-sm"
+        />
+      </div>
+      <div class="flex flex-col mb-4 md:w-1/2 w-full">
+        <label class="mb-2 text-primary">Last Name*</label>
+        <input
+          formControlName="lastName"
+          placeholder="Enter Last Name"
+          class="border px-4 py-3 rounded-lg text-sm"
+        />
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="mt-4">
+    <p class="text-xl mt-4 font-base text-gray-700 mb-4">Additional Info</p>
+
+    <div class="flex flex-row md:w-2/3 w-1/2 gap-4">
+      <div class="flex flex-col mb-4 md:w-1/2 w-full">
+        <label class="mb-2 text-primary">Birth Date*</label>
+        <div class="flex relative">
+          <input
+            formControlName="birthDate"
+            [matDatepicker]="birthDate"
+            (click)="birthDate.open()"
+            placeholder="MM/DD/YYYY"
+            [max]="maxDate"
+            class="border px-4 py-3 rounded-lg text-sm md:w-full"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            class="absolute right-0 top-1"
+            [for]="birthDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #birthDate></mat-datepicker>
+        </div>
+      </div>
+      <div class="flex flex-col mb-4 md:w-1/2 w-full">
+        <label class="mb-2 text-primary">Basic Salary*</label>
+        <input
+          digitOnly
+          formControlName="basicSalary"
+          placeholder="Enter Basic Salary"
+          class="border px-4 py-3 rounded-lg text-sm"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-row md:w-2/3 w-1/2 gap-4">
+      <div class="flex flex-col mb-4 md:w-1/2 w-full">
+        <label class="mb-2 text-primary">Status*</label>
+        <input
+          formControlName="status"
+          placeholder="Enter Status"
+          class="border px-4 py-3 rounded-lg text-sm"
+        />
+      </div>
+      <div class="flex flex-col mb-4 md:w-1/2 w-full">
+        <label class="mb-2 text-primary">Group*</label>
+        <mat-select
+          formControlName="group"
+          placeholder="Select Group"
+          class="border px-4 py-3 rounded-lg text-sm"
+        >
+          <mat-option *ngFor="let group of groups" [value]="group">
+            {{ group | titlecase }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div class="flex flex-col mb-4">
+      <label class="mb-2 text-primary">Description*</label>
+      <textarea
+        rows="8"
+        cols="28"
+        formControlName="description"
+        placeholder="Description"
+        class="border px-4 py-3 rounded-lg md:w-1/2 w:full text-sm"
+      ></textarea>
+    </div>
+  </div>
+  <hr class="my-6" />
+  <div class="flex flex-row justify-end gap-4">
+    <button
+      type="button"
+      class="border rounded-3xl text-primary border-primary py-2 px-6"
+    >
+      Cancel
+    </button>
+    <button
+      [disabled]="!employeeForm.valid"
+      type="submit"
+      class="disabled:bg-gray-500 disabled:cursor-not-allowed rounded-3xl text-white bg-primary py-2 px-6"
+    >
+      Add Employee
+    </button>
+  </div>
+</form>
