@@ -8,7 +8,11 @@
     <th mat-header-cell mat-sort-header *matHeaderCellDef>
       {{ table.labels[0] }}
     </th>
-    <td mat-cell *matCellDef="let row">{{ row[table.columns[0]] }}</td>
+    <td mat-cell *matCellDef="let row">
+      <a class="text-primary" [routerLink]="['/dashboard/employee/' + row.id]">{{
+        row[table.columns[0]]
+      }}</a>
+    </td>
   </ng-container>
 
   <ng-container [matColumnDef]="table.columns[1]">
@@ -75,18 +79,10 @@
     </th>
     <td mat-cell *matCellDef="let row">
       <div class="flex flex-row gap-2">
-        <button
-          mat-raised-button
-          color="accent"
-          class="mat-elevation-z0"
-        >
+        <button mat-raised-button color="accent" class="mat-elevation-z0">
           Edit
         </button>
-        <button
-          mat-raised-button
-          color="warn"
-          class="mat-elevation-z0"
-        >
+        <button mat-raised-button color="warn" class="mat-elevation-z0" (click)="onDeleteEmployee(row.id)">
           Delete
         </button>
       </div>

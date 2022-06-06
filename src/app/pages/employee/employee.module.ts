@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,7 +19,9 @@ import { EmployeeListComponent } from './page/employee-list/employee-list.compon
 import { EmployeeService } from './service/employee.service';
 import { EmployeeListTableComponent } from './component/employee-list-table/employee-list-table.component';
 import { RupiahPipe } from 'src/app/ui/pipes/rupiah/rupiah.pipe';
+import { ConfirmationModalComponent } from './component/confirmation-modal/confirmation-modal.component';
 import { EmployeeAddComponent } from './page/employee-add/employee-add.component';
+import { EmployeeDetailComponent } from './page/employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,8 @@ import { EmployeeAddComponent } from './page/employee-add/employee-add.component
     EmployeeListTableComponent,
     RupiahPipe,
     EmployeeAddComponent,
+    EmployeeDetailComponent,
+    ConfirmationModalComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +47,9 @@ import { EmployeeAddComponent } from './page/employee-add/employee-add.component
     MatPaginatorModule,
     MatDatepickerModule,
     MatSelectModule,
-    DigitOnlyModule
+    MatDialogModule,
+    DigitOnlyModule,
+    MatSnackBarModule,
   ],
   providers: [EmployeeService],
 })

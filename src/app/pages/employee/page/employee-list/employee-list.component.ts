@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { TableModel } from 'src/app/core/table/table-model';
 import { EmployeeService } from '../../service/employee.service';
@@ -17,7 +18,10 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   public isLoading: boolean;
   public table: TableModel;
 
-  constructor(private service: EmployeeService) {}
+  constructor(
+    private service: EmployeeService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.paramModel = new EmployeeListParamModel();
@@ -62,9 +66,30 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
       .subscribe((resp) => {
         this.table.totalData = resp.headers.get('X-Total-Count');
         this.table.dataSource.data = resp.body;
-
         this.isLoading = false;
       });
+
+    this.subscribers.push(subs);
+  }
+
+  onSortTable($event: any) {
+    this.paramModel._sort = $event.sort;
+    this.paramModel._order = $event.direction;
+    this.paramModel._page = 1;
+
+    this.getDataEmployee();
+  }
+
+  onDeleteEmployee(id: number) {
+    const subs = this.service.deleteEmployee(id).subscribe((resp) => {
+      this.snackBar.open('Delete employee success', '', {
+        duration: 2000,
+        horizontalPosition: 'end',
+        verticalPosition: 'top',
+        panelClass: 'success-snackbar',
+      });
+      this.getDataEmployee();
+    });
 
     this.subscribers.push(subs);
   }

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EmployeeService } from '../../service/employee.service';
 
@@ -8,7 +10,7 @@ import { EmployeeService } from '../../service/employee.service';
   templateUrl: './employee-add.component.html',
   styleUrls: ['./employee-add.component.scss'],
 })
-export class EmployeeAddComponent implements OnInit {
+export class EmployeeAddComponent implements OnInit, OnDestroy {
   private subscribers: Subscription[] = [];
   public isLoading: boolean = false;
   public employeeForm: FormGroup = new FormGroup({});
@@ -25,7 +27,11 @@ export class EmployeeAddComponent implements OnInit {
     'group5',
   ];
 
-  constructor(private service: EmployeeService) {}
+  constructor(
+    private service: EmployeeService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.initFormEmployee();
@@ -52,8 +58,23 @@ export class EmployeeAddComponent implements OnInit {
     const payload = this.employeeForm.value;
     const subs = this.service.addEmployee(payload).subscribe((res) => {
       this.employeeForm.reset();
-      console.log(res)
+      this.router.navigate(['/dashboard/employee']);
+      this.openSnackbarSuccess()
     });
+
     this.subscribers.push(subs);
+  }
+
+  openSnackbarSuccess() {
+    this.snackBar.open('Add employee success', '', {
+      duration: 2000,
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      panelClass: 'success-snackbar',
+    });
+  }
+  
+  ngOnDestroy(): void {
+    this.subscribers.forEach((sub) => sub.unsubscribe());
   }
 }

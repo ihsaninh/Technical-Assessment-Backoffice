@@ -97,18 +97,6 @@
       "description": "Ut ab a eligendi aut."
     },
     {
-      "id": 8,
-      "username": "Adah88",
-      "firstName": "Waino",
-      "lastName": "Effertz",
-      "email": "Adam_Carter37@hotmail.com",
-      "birthDate": "2021-12-30T08:25:29.081Z",
-      "basicSalary": 10000000,
-      "status": "inactive",
-      "group": "superadmin",
-      "description": "Quia non accusantium eaque animi."
-    },
-    {
       "id": 9,
       "username": "Kathlyn5",
       "firstName": "Alejandrin",
@@ -781,18 +769,6 @@
       "description": "Rerum nobis mollitia molestiae qui."
     },
     {
-      "id": 65,
-      "username": "Alan40",
-      "firstName": "Theo",
-      "lastName": "Treutel",
-      "email": "Scarlett.Hansen@gmail.com",
-      "birthDate": "2021-09-10T16:46:10.106Z",
-      "basicSalary": 10000000,
-      "status": "active",
-      "group": "group1",
-      "description": "Sint deserunt ratione repellendus quae."
-    },
-    {
       "id": 66,
       "username": "Concepcion.Abshire54",
       "firstName": "Teagan",
@@ -1213,16 +1189,28 @@
       "description": "Consequuntur et minima labore aut."
     },
     {
-      "username": "ihsan_inh",
-      "email": "ihsan.inh@gmail.com",
-      "firstName": "Ihsan",
-      "lastName": "Habib",
-      "birthDate": "2022-05-31T17:00:00.000Z",
+      "username": "ameliasls",
+      "email": "amel@gmail.com",
+      "firstName": "Amelia",
+      "lastName": "Salas",
+      "birthDate": "1999-12-26T17:00:00.000Z",
       "basicSalary": "10000000",
-      "status": "Single",
-      "group": "user",
+      "status": "permanent",
+      "group": "group1",
       "description": "lorem ipsum dolor sit amet",
       "id": 101
+    },
+    {
+      "username": "asd",
+      "email": "asd@gmail.com",
+      "firstName": "asd",
+      "lastName": "asd",
+      "birthDate": "2022-06-05T17:00:00.000Z",
+      "basicSalary": "10000000",
+      "status": "permanent",
+      "group": "user",
+      "description": "permanent",
+      "id": 102
     }
   ]
 }

@@ -31,4 +31,14 @@ export class EmployeeService {
       employee
     );
   }
+
+  getEmployeeById(id: string | null): Observable<EmployeeModel> {
+    return this.http.get<EmployeeModel>(
+      `${environment.baseUrl}employees/${id}`
+    );
+  }
+
+  deleteEmployee(id: number): Observable<any> {
+    return this.http.delete(`${environment.baseUrl}employees/${id}`);
+  }
 }
