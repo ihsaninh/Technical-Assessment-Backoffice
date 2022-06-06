@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { TableModel } from 'src/app/core/table/table-model';
+import { EmployeeFilterComponent } from '../../component/employee-filter/employee-filter.component';
 import { EmployeeService } from '../../service/employee.service';
 import { EmployeeListParamModel } from '../../shared/model/employee-list-param-model';
 
@@ -20,7 +22,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
 
   constructor(
     private service: EmployeeService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -75,7 +78,6 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   onSortTable($event: any) {
     this.paramModel._sort = $event.sort;
     this.paramModel._order = $event.direction;
-    this.paramModel._page = 1;
 
     this.getDataEmployee();
   }
@@ -94,7 +96,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     this.subscribers.push(subs);
   }
 
-  public updatePage($event: PageEvent) {
+  updatePage($event: PageEvent) {
     this.table.setPageSize($event.pageSize);
     this.table.setPage($event.pageIndex + 1);
 
@@ -102,6 +104,26 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     this.paramModel._limit = this.table.pageSize;
 
     this.getDataEmployee();
+  }
+
+  openDialogFilter() {
+    this.dialog
+      .open(EmployeeFilterComponent, {
+        autoFocus: false,
+        width: '450px',
+        panelClass: 'dialog-filter',
+        data: this.paramModel
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.paramModel.q = result.q;
+          this.paramModel.basicSalary_gte = result.basicSalary_gte;
+          this.paramModel.basicSalary_lte = result.basicSalary_lte;
+
+          this.getDataEmployee();
+        }
+      });
   }
 
   ngOnDestroy(): void {

@@ -8,19 +8,24 @@ const routes: Routes = [
   {
     path: '',
     component: EmployeeListComponent,
+    data: { shouldDetach: true },
   },
   {
     path: 'add',
     component: EmployeeAddComponent,
   },
   {
+    path: 'edit/:id',
+    component: EmployeeAddComponent,
+  },
+  {
     path: ':id',
     component: EmployeeDetailComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EmployeeRoutingModule { }
+export class EmployeeRoutingModule {}

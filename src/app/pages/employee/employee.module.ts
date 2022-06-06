@@ -4,6 +4,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -22,6 +23,7 @@ import { RupiahPipe } from 'src/app/ui/pipes/rupiah/rupiah.pipe';
 import { ConfirmationModalComponent } from './component/confirmation-modal/confirmation-modal.component';
 import { EmployeeAddComponent } from './page/employee-add/employee-add.component';
 import { EmployeeDetailComponent } from './page/employee-detail/employee-detail.component';
+import { EmployeeFilterComponent } from './component/employee-filter/employee-filter.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { EmployeeDetailComponent } from './page/employee-detail/employee-detail.
     EmployeeAddComponent,
     EmployeeDetailComponent,
     ConfirmationModalComponent,
+    EmployeeFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { EmployeeDetailComponent } from './page/employee-detail/employee-detail.
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatAutocompleteModule,
     ReactiveFormsModule,
     MatPaginatorModule,
     MatDatepickerModule,
@@ -51,6 +55,8 @@ import { EmployeeDetailComponent } from './page/employee-detail/employee-detail.
     DigitOnlyModule,
     MatSnackBarModule,
   ],
-  providers: [EmployeeService],
+  providers: [
+    EmployeeService
+  ],
 })
 export class EmployeeModule {}

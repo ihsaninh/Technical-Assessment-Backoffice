@@ -5,7 +5,9 @@
   autocomplete="off"
   class="bg-white rounded-2xl p-8 mt-6 mx-3"
 >
-  <h1 class="text-xl mt-4 font-base">Add Employee</h1>
+  <h1 class="text-xl mt-4 font-base">
+    {{ id ? "Edit Employee" : "Add Employee" }}
+  </h1>
   <hr class="mt-6" />
   <div class="mt-4">
     <p class="text-xl mt-4 font-base text-gray-700 mb-4">Basic Info</p>
@@ -17,6 +19,15 @@
           placeholder="Enter Username"
           class="border px-4 py-3 rounded-lg text-sm"
         />
+        <small
+          class="text-red-600 pt-1"
+          *ngIf="
+            employeeForm.touched &&
+            employeeForm.get('username').hasError('required')
+          "
+        >
+          Please complete this field
+        </small>
       </div>
       <div class="flex flex-col mb-4 md:w-1/2 w-full">
         <label class="mb-2 text-primary">Email*</label>
@@ -25,6 +36,24 @@
           placeholder="Enter Email"
           class="border px-4 py-3 rounded-lg text-sm"
         />
+        <small
+          class="text-red-600 pt-1"
+          *ngIf="
+            employeeForm.touched &&
+            employeeForm.get('email').hasError('required')
+          "
+        >
+          Please complete this field
+        </small>
+        <small
+          class="text-red-600 pt-1"
+          *ngIf="
+            employeeForm.touched &&
+            employeeForm.get('email').hasError('pattern')
+          "
+        >
+          Email not valid
+        </small>
       </div>
     </div>
 
@@ -36,6 +65,15 @@
           placeholder="Enter First Name"
           class="border px-4 py-3 rounded-lg text-sm"
         />
+        <small
+          class="text-red-600 pt-1"
+          *ngIf="
+            employeeForm.touched &&
+            employeeForm.get('firstName').hasError('required')
+          "
+        >
+          Please complete this field
+        </small>
       </div>
       <div class="flex flex-col mb-4 md:w-1/2 w-full">
         <label class="mb-2 text-primary">Last Name*</label>
@@ -44,6 +82,15 @@
           placeholder="Enter Last Name"
           class="border px-4 py-3 rounded-lg text-sm"
         />
+        <small
+          class="text-red-600 pt-1"
+          *ngIf="
+            employeeForm.touched &&
+            employeeForm.get('lastName').hasError('required')
+          "
+        >
+          Please complete this field
+        </small>
       </div>
     </div>
   </div>
@@ -70,6 +117,15 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #birthDate></mat-datepicker>
         </div>
+        <small
+          class="text-red-600 pt-1"
+          *ngIf="
+            employeeForm.touched &&
+            employeeForm.get('birthDate').hasError('required')
+          "
+        >
+          Please complete this field
+        </small>
       </div>
       <div class="flex flex-col mb-4 md:w-1/2 w-full">
         <label class="mb-2 text-primary">Basic Salary*</label>
@@ -79,6 +135,15 @@
           placeholder="Enter Basic Salary"
           class="border px-4 py-3 rounded-lg text-sm"
         />
+        <small
+          class="text-red-600 pt-1"
+          *ngIf="
+            employeeForm.touched &&
+            employeeForm.get('basicSalary').hasError('required')
+          "
+        >
+          Please complete this field
+        </small>
       </div>
     </div>
 
@@ -90,18 +155,42 @@
           placeholder="Enter Status"
           class="border px-4 py-3 rounded-lg text-sm"
         />
+        <small
+          class="text-red-600 pt-1"
+          *ngIf="
+            employeeForm.touched &&
+            employeeForm.get('status').hasError('required')
+          "
+        >
+          Please complete this field
+        </small>
       </div>
       <div class="flex flex-col mb-4 md:w-1/2 w-full">
         <label class="mb-2 text-primary">Group*</label>
-        <mat-select
-          formControlName="group"
+        <input
+          type="text"
           placeholder="Select Group"
+          formControlName="group"
+          [matAutocomplete]="auto"
           class="border px-4 py-3 rounded-lg text-sm"
+        />
+        <small
+          class="text-red-600 pt-1"
+          *ngIf="
+            employeeForm.touched &&
+            employeeForm.get('group').hasError('required')
+          "
         >
-          <mat-option *ngFor="let group of groups" [value]="group">
-            {{ group | titlecase }}
+          Please complete this field
+        </small>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let group of filteredGroups | async"
+            [value]="group"
+          >
+            {{ group }}
           </mat-option>
-        </mat-select>
+        </mat-autocomplete>
       </div>
     </div>
 
@@ -114,12 +203,22 @@
         placeholder="Description"
         class="border px-4 py-3 rounded-lg md:w-1/2 w:full text-sm"
       ></textarea>
+      <small
+        class="text-red-600 pt-1"
+        *ngIf="
+          employeeForm.touched &&
+          employeeForm.get('description').hasError('required')
+        "
+      >
+        Please complete this field
+      </small>
     </div>
   </div>
   <hr class="my-6" />
   <div class="flex flex-row justify-end gap-4">
     <button
       type="button"
+      [routerLink]="['/dashboard/employee']"
       class="border rounded-3xl text-primary border-primary py-2 px-6"
     >
       Cancel
@@ -129,7 +228,7 @@
       type="submit"
       class="disabled:bg-gray-500 disabled:cursor-not-allowed rounded-3xl text-white bg-primary py-2 px-6"
     >
-      Add Employee
+      {{ id ? "Save" : "Add" }}
     </button>
   </div>
 </form>

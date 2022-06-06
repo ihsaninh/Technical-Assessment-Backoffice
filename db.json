@@ -13,28 +13,16 @@
   ],
   "employees": [
     {
-      "id": 1,
-      "username": "Retta_Collier",
-      "firstName": "Arjun",
-      "lastName": "Rippin",
-      "email": "Vanessa.West@yahoo.com",
-      "birthDate": "2022-03-21T06:32:36.536Z",
-      "basicSalary": 20000000,
-      "status": "inactive",
-      "group": "group4",
-      "description": "Quam itaque voluptas magni sed."
-    },
-    {
-      "id": 2,
       "username": "Terrell.Hackett",
-      "firstName": "Leonor",
-      "lastName": "Yost",
       "email": "Kevin42@yahoo.com",
+      "firstName": "Leonor edit",
+      "lastName": "Yost",
       "birthDate": "2021-10-25T10:28:52.608Z",
-      "basicSalary": 10000000,
+      "basicSalary": "10000000",
       "status": "suspended",
       "group": "group1",
-      "description": "Vel repellendus autem id dolorum."
+      "description": "Vel repellendus autem id dolorum.",
+      "id": 2
     },
     {
       "id": 3,
@@ -47,18 +35,6 @@
       "status": "inactive",
       "group": "group3",
       "description": "Voluptatibus quo voluptatem nihil quis."
-    },
-    {
-      "id": 4,
-      "username": "Travis_Willms",
-      "firstName": "Meagan",
-      "lastName": "Champlin",
-      "email": "Savanna88@gmail.com",
-      "birthDate": "2021-07-13T20:59:18.078Z",
-      "basicSalary": 1000000,
-      "status": "suspended",
-      "group": "group2",
-      "description": "Beatae magni sequi sit qui."
     },
     {
       "id": 5,

@@ -6,7 +6,7 @@
         class="mat-elevation-z0"
         mat-raised-button
         color="primary"
-        [routerLink]="['/dashboard/employee/add']"
+        (click)="openDialogFilter()"
       >
         <mat-icon>filter_list</mat-icon>
         Filter

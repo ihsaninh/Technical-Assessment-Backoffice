@@ -1,5 +1,8 @@
 export class EmployeeListParamModel {
   public username: string;
+  public q: string;
+  public basicSalary_gte: string;
+  public basicSalary_lte: string;
   public _page: number;
   public _limit: number;
   public email: string;

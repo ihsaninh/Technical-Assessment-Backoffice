@@ -79,7 +79,7 @@
     </th>
     <td mat-cell *matCellDef="let row">
       <div class="flex flex-row gap-2">
-        <button mat-raised-button color="accent" class="mat-elevation-z0">
+        <button mat-raised-button color="accent" class="mat-elevation-z0" [routerLink]="['/dashboard/employee/edit/' + row.id]">
           Edit
         </button>
         <button mat-raised-button color="warn" class="mat-elevation-z0" (click)="onDeleteEmployee(row.id)">

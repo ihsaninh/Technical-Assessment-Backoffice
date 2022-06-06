@@ -41,4 +41,11 @@ export class EmployeeService {
   deleteEmployee(id: number): Observable<any> {
     return this.http.delete(`${environment.baseUrl}employees/${id}`);
   }
+
+  editEmployee(id: string, employee: EmployeeModel): Observable<EmployeeModel> {
+    return this.http.put<EmployeeModel>(
+      `${environment.baseUrl}employees/${id}`,
+      employee
+    );
+  }
 }
