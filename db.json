@@ -1,16 +1,4 @@
 {
-  "menus": [
-    {
-      "id": 1,
-      "name": "Home",
-      "path": "/dashboard/home"
-    },
-    {
-      "id": 2,
-      "name": "Employee Managament",
-      "path": "/dashboard/employee"
-    }
-  ],
   "employees": [
     {
       "username": "Terrell.Hackett",
