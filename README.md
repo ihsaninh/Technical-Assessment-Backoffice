@@ -17,6 +17,7 @@
    ```
    $ ng serve
    ```
+4. run di browser dengan url: http://localhost:4200
 
 Aplikasi ini menggunakan data dari JSON Server yang di deploy di Heroku. Atau jika ingin menggunakan data dari localhost, silahkan ganti urlnya di file `src/environments/environment.ts`. Berikut caranya.
 
