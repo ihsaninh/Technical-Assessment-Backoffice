@@ -51,3 +51,4 @@ Maka aplikasi akan menggunakan data dari local.
 ## Tambahan
   * Terdapat pengecekan apakah user sudah login atau belum, jika belum maka akan diarahkan ke halaman login. Jika sudah login maka akan diarahkan ke halaman dashboard. fitur ini menggunakan *auth.guard*.<br />
   * Admin dapat menghapus data employee, dengan mengklik tombol delete pada table employee.
+  * Logout button di Toolbar.
