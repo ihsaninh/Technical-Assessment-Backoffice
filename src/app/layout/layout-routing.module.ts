@@ -11,13 +11,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'employee',
         pathMatch: 'full'
-      },
-      {
-        path: 'home',
-        loadChildren: () =>
-          import('../pages/home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'employee',

@@ -1,11 +1,15 @@
 <mat-toolbar class="header">
-	<button mat-icon-button
-		(click)="onToggleSidenav()">
-		<mat-icon>menu</mat-icon>
-	</button>
+  <button mat-icon-button (click)="onToggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
 
-	<span class="font-18px font-xs-12px font-7a7a7a pointer ml-3">
-	Admin Dashboard
-	</span>
+  <span class="font-18px font-xs-12px font-7a7a7a pointer ml-3">
+    Admin Dashboard
+  </span>
 
+  <div class="ml-auto">
+    <button mat-icon-button (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>

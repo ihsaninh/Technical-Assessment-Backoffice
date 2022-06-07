@@ -29,6 +29,7 @@
       <mat-form-field appearance="standard">
         <mat-label>Password</mat-label>
         <input
+          type="password"
           matInput
           placeholder="Enter your Password"
           formControlName="password"
@@ -42,7 +43,7 @@
         color="primary"
         [disabled]="!loginForm.valid || isLoading"
       >
-        {{ isLoading ? 'Logged in...' : 'Login' }}
+        {{ isLoading ? "Logged in..." : "Login" }}
       </button>
     </div>
   </div>
