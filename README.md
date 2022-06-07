@@ -17,7 +17,7 @@
    ```
    $ ng serve
    ```
-4. run di browser dengan url: http://localhost:4200
+4. Jalankan di browser dengan url: http://localhost:4200
 
 Aplikasi ini menggunakan data dari JSON Server yang di deploy di Heroku. Atau jika ingin menggunakan data dari localhost, silahkan ganti urlnya di file `src/environments/environment.ts`. Berikut caranya.
 
@@ -54,5 +54,4 @@ Maka aplikasi akan menggunakan data dari local.
 
 ## Tambahan
   * Terdapat pengecekan apakah user sudah login atau belum, jika belum maka akan diarahkan ke halaman login. Jika sudah login maka akan diarahkan ke halaman dashboard. fitur ini menggunakan *auth.guard*.
-  <br>
   * Admin dapat menghapus data employee, dengan mengklik tombol delete pada table employee.
